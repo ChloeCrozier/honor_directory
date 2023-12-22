@@ -17,9 +17,9 @@ db.run(`
 `);
 
 // Function to check if a name already exists for a given year and semester
-const checkIfEntryExists = (name, year, semester) => {
+const checkIfEntryExists = (name, year) => {
   return new Promise((resolve, reject) => {
-    db.get('SELECT * FROM student_data WHERE name = ? AND year = ? AND ? IS NOT NULL', [name, year, semester], (err, row) => {
+    db.get('SELECT * FROM student_data WHERE name = ? AND year = ?', [name, year], (err, row) => {
       if (err) {
         reject(err);
       } else {
@@ -31,15 +31,15 @@ const checkIfEntryExists = (name, year, semester) => {
 
 // Function to insert data into the database
 const insertData = async (name, year, semester, listType) => {
-  const existingData = await checkIfEntryExists(name, year, semester);
+  const existingData = await checkIfEntryExists(name, year);
 
   if (existingData) {
-    // Entry exists, update only if the current column is 'N/A'
+    // Entry exists, update the corresponding column based on semester
     const { fall, spring } = existingData;
 
-    if (semester === 'Fall' && fall === 'N/A') {
+    if (semester === 'Fall') {
       db.run('UPDATE student_data SET fall = ? WHERE name = ? AND year = ?', [listType, name, year]);
-    } else if (semester === 'Spring' && spring === 'N/A') {
+    } else if (semester === 'Spring') {
       db.run('UPDATE student_data SET spring = ? WHERE name = ? AND year = ?', [listType, name, year]);
     }
   } else {

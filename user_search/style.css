@@ -1,28 +1,99 @@
 /* Add your styles here */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px;
+    background-color: #f2f4f8;
+    text-align: center;
 }
 
 h1 {
-    color: #333;
+    color: #354052;
+    margin-bottom: 20px;
 }
 
 label {
+    display: inline-block;
     margin-right: 10px;
+    color: #54667a;
+}
+
+#search {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #d1d8e0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: #354052;
+}
+
+#resultTable {
+    border: 1px solid #d1d8e0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 table {
-    border-collapse: collapse;
     width: 100%;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #d1d8e0;
+    padding: 12px;
     text-align: left;
+    color: #354052;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #576b95;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f4f8;
+}
+
+tr:hover {
+    background-color: #e0e4eb;
+}
+
+#loadMoreBtn {
+    background-color: #4b6584;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#loadMoreBtn:hover {
+    background-color: #3b4a6b;
+}
+
+#entriesShowing {
+    font-size: 14px;
+    color: #65748c;
+    margin-top: 10px;
+}
+
+th.sortable {
+    position: relative;
+    cursor: pointer;
+}
+
+th.sortable::after {
+    content: '\25B2'; /* Unicode character for an upward arrow */
+    font-size: 12px;
+    margin-left: 5px;
+    opacity: 0.5;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+th.sortable.desc::after {
+    transform: rotate(180deg);
 }

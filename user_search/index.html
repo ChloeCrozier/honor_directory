@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honor Directory Search</title>
+    <title>Honors Directory Search</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,16 +16,19 @@
     <table id="resultTable">
         <thead>
             <tr>
-                <th>Student Name</th>
-                <th>Calendar Year</th>
+                <th class="sortable" onclick="sortTable('name')">Student Name</th>
+                <th class="sortable" onclick="sortTable('year')">Calendar Year</th>
                 <th>Fall Awards</th>
                 <th>Spring Awards</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Table rows will be dynamically populated here -->
         </tbody>
     </table>
+
+    <div id="entriesCount">Number of entries: <span id="entriesShowing">0</span></div>
+
+    <button id="loadMoreBtn">Load More</button>
 
     <script src="script.js"></script>
 </body>
